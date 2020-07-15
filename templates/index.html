@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h3>Sign up for weekly movie suggestions.</h3>
-    <form action="/send">
-        <input type="email" name="email" placeholder="noah@gmail.com">
-        <button>Subscribe</button>
-    </form>
+    <section id="main-container">
+        <h3>PRAW Bot</h3>
+        <div class="wrapper">
+            <h3>Sign up for weekly movie suggestions.</h3>
+            <form action="/send">
+                <input type="email" name="email" placeholder="noah@gmail.com">
+                <button>Subscribe</button>
+            </form>
+        </div>
+    </section>
 </body>
 
 </html>
