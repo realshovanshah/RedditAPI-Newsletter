@@ -10,7 +10,7 @@
 }
 
 .wrapper {
-    width: 70%;
+    width: 72%;
     text-align: center;
     margin: auto;
     margin-top: 20%;
@@ -23,6 +23,13 @@
     margin: 10px;
 }
 
+.wrapper p {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 16px;
+    font-size: 0.9em;
+}
+
 input[type="email"] {
     /* display: block; */
     margin: 10px;
@@ -31,4 +38,10 @@ input[type="email"] {
 
 button {
     padding: 6px;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper h3 {
+        font-size: 4vw;
+    }
 }
