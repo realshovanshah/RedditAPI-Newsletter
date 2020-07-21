@@ -3,9 +3,13 @@ import praw
 import smtplib, requests
 import utils, base64, datetime, time
 import threading
+import os
+from dotenv import load_dotenv
 
 
 app = Flask(__name__)
+
+load_dotenv()
 
 
 @app.route("/")
@@ -23,8 +27,8 @@ def success():
 def send_mail():
     input_email = request.args.get("email", "null")
     subscribe_user(email=input_email, 
-                    user_group_email="dev.shahjr@sandbox6e7d392419c74374bd6c56b803a00633.mailgun.org",
-                    api_key="e457731b475fdf8e9a44cca3d377639a-a83a87a9-ed0bcdbe")
+                    user_group_email=os.environ.get("MAILGUN_EMAIL"),
+                    api_key=os.environ.get("MAILGUN_API_KEY"))
     make_mail(input_email)
     # thread = threading.Thread(target=weekly_email, args=(input_email,))
     # thread.start()
@@ -104,3 +108,10 @@ if __name__ == "__main__":
 #         print("Sending email")
 #         make_mail(input_email)
 #         print("Waiting to send another email...")
+
+
+# headers = {   
+#     'Accept': 'application/vnd.heroku+json; version=3',
+#     'Authorization': 'Bearer 64489caf-61e3-4a8c-a865-25fe881d7bef',    
+# }
+# response = requests.get('https://api.heroku.com/apps/reddit-api-newsletter/config-vars', headers=headers)

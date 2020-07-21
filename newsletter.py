@@ -2,6 +2,10 @@ import requests
 import praw
 import smtplib
 import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def get_movie_detail():
@@ -21,11 +25,12 @@ def get_movie_detail():
 
 
 def get_subscribed_users():
-    api_key = "e457731b475fdf8e9a44cca3d377639a-a83a87a9-ed0bcdbe"
+    api_key = os.environ.get("MAILGUN_API_KEY")
 
-    url = f"https://api:{api_key}@api.mailgun.net/v3/lists/dev.shahjr@sandbox6e7d392419c74374bd6c56b803a00633.mailgun.org/members"
+    url = f"https://api:{api_key}@api.mailgun.net/v3/lists/dev.shahjr@sandbox7cd5b792c64c4d4ab943128c646c5234.mailgun.org/members"
 
     response = requests.get(url).json()
+    print(requests.get(url).raise_for_status)
 
     data_list = response["items"]
     email_list = []
